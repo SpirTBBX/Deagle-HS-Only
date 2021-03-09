@@ -25,7 +25,7 @@ public void OnPluginStart()
 {
 	for(int i = 1; i <= MaxClients; i++)
 	{
-		if(IsClientConnected(i) && IsClientInGame(i))
+		if(IsClientInGame(i))
 		{
 			SDKHook(i, SDKHook_OnTakeDamage, OnTakeDamage);
 		}
@@ -40,7 +40,7 @@ public void OnClientPutInServer(int client)
 
 public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom)
 {
-	if(IsClientConnected(attacker) && IsClientInGame(attacker))
+	if(IsClientInGame(attacker))
 	{
 		char sWeapon[32];
 		GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
