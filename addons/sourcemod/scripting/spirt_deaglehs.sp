@@ -37,7 +37,7 @@ public void OnClientPutInServer(int client)
 
 public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom)
 {
-	if(IsClientInGame(attacker))
+	if(0 < attacker <= MaxClients && IsClientInGame(attacker))
 	{
 		char sWeapon[32];
 		GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
