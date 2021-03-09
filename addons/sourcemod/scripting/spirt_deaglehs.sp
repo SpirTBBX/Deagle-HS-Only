@@ -1,16 +1,13 @@
-#pragma semicolon 1
-
-#define DEBUG
-
-#define PLUGIN_AUTHOR "SpirT"
-#define PLUGIN_VERSION "1.0"
-
 #include <sourcemod>
 #include <sdktools>
 #include <sdkhooks>
 #include <cstrike>
 
+#define PLUGIN_AUTHOR "SpirT"
+#define PLUGIN_VERSION "1.0"
+
 #pragma newdecls required
+#pragma semicolon 1
 
 public Plugin myinfo = 
 {
