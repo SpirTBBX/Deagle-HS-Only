@@ -42,13 +42,8 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 		char sWeapon[32];
 		GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
 		
-		if (StrEqual(sWeapon, "weapon_deagle"))
+		if (StrEqual(sWeapon, "weapon_deagle") && !(damagetype & CS_DMG_HEADSHOT))
 		{
-			if(damagetype &= CS_DMG_HEADSHOT)
-			{
-				return Plugin_Continue;
-			}
-			
 			damage = 0.0;
 			return Plugin_Changed;
 		}
