@@ -55,10 +55,6 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 			damage = 0.0;
 			return Plugin_Changed;
 		}
-		else
-		{
-			return Plugin_Continue;
-		}
 	}
 	return Plugin_Continue;
 }
