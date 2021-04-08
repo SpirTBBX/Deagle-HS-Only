@@ -3,7 +3,7 @@
 #define DEBUG
 
 #define PLUGIN_AUTHOR "SpirT"
-#define PLUGIN_VERSION "1.0"
+#define PLUGIN_VERSION "1.0.2"
 
 #include <sourcemod>
 #include <sdktools>
@@ -14,18 +14,18 @@
 
 public Plugin myinfo = 
 {
-	name = "[SpirT] Deagle HS Only",
-	author = PLUGIN_AUTHOR,
-	description = "",
-	version = PLUGIN_VERSION,
+	name = "[SpirT] Deagle HS Only", 
+	author = PLUGIN_AUTHOR, 
+	description = "", 
+	version = PLUGIN_VERSION, 
 	url = ""
 };
 
 public void OnPluginStart()
 {
-	for(int i = 1; i <= MaxClients; i++)
+	for (int i = 1; i <= MaxClients; i++)
 	{
-		if(IsClientConnected(i) && IsClientInGame(i))
+		if (IsClientInGame(i))
 		{
 			SDKHook(i, SDKHook_OnTakeDamage, OnTakeDamage);
 		}
@@ -33,21 +33,20 @@ public void OnPluginStart()
 }
 
 
-public void OnClientPutInServer(int client)
+public void OnClientPostAdminCheck(int client)
 {
 	SDKHook(client, SDKHook_OnTakeDamage, OnTakeDamage);
 }
 
 public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3], int damagecustom)
 {
-	if(IsClientConnected(attacker) && IsClientInGame(attacker))
+	if(IsValidEdict(weapon))
 	{
 		char sWeapon[32];
 		GetEdictClassname(weapon, sWeapon, sizeof(sWeapon));
-		
 		if (StrEqual(sWeapon, "weapon_deagle"))
 		{
-			if(damagetype &= CS_DMG_HEADSHOT)
+			if (damagetype &= CS_DMG_HEADSHOT)
 			{
 				return Plugin_Continue;
 			}
@@ -55,10 +54,7 @@ public Action OnTakeDamage(int victim, int &attacker, int &inflictor, float &dam
 			damage = 0.0;
 			return Plugin_Changed;
 		}
-		else
-		{
-			return Plugin_Continue;
-		}
 	}
+	
 	return Plugin_Continue;
 }
