@@ -4,4 +4,4 @@ This plugin allows your server to only allow damage if the deagle shots are head
 
 # Alliedmodders post
 
-LINK
+https://forums.alliedmods.net/showthread.php?p=2739881#post2739881
