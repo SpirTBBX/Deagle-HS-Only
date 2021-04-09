@@ -23,6 +23,7 @@ public Plugin myinfo =
 
 public void OnPluginStart()
 {
+	RegPluginLibrary("spirt_deaglehs");
 	for (int i = 1; i <= MaxClients; i++)
 	{
 		if (IsClientInGame(i))
